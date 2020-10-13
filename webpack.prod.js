@@ -3,6 +3,8 @@ const webpack = require('webpack')
 const HtmlWebPackPlugin = require("html-webpack-plugin")
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 
+//TODO: npm i -D optimize-css-assets-webpack-plugin terser-webpack-plugin
+
 module.exports = {
     entry: './src/client/index.js',
     mode: 'production',
