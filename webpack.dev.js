@@ -9,10 +9,10 @@ module.exports = {
     mode: 'development',
     devtool: 'source-map',
     stats: 'verbose',
-    // output: {
-    //     filename: 'bundle.js',
-    //     path: path.resolve(__dirname, 'dist'),
-    //   },
+    output: {
+        filename: 'bundle.js',
+        path: path.resolve(__dirname, 'dist'),
+      },
     //   resolve: {
     //     // Add `.ts` and `.tsx` as a resolvable extension.
     //     extensions: [".ts", ".tsx", ".js", ".css", ".scss"]
