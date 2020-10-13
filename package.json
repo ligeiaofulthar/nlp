@@ -14,7 +14,7 @@
   "description": "Evaluate A News Article with Natural Language Processing",
   "dependencies": {
     "express": "^4.17.1",
-    "webpack": "^4.35.3",
+    "webpack": "^4.44.2",
     "webpack-cli": "^3.3.12"
   },
   "devDependencies": {
