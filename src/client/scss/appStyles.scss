@@ -1,0 +1,20 @@
+@import 'themeColors';
+@import 'resets';
+@import 'base';
+@import 'footer';
+@import 'form';
+@import 'header';
+
+$theme-font: 'Arial', sans-serif;
+
+body {
+  font-family: $theme-font;
+  background-color: $themeColor-Light;
+  h1, h2 {
+      color: $themeColor-Dark
+  }
+}
+
+input {
+    background-color: blue;
+}
