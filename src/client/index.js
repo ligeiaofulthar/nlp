@@ -1,14 +1,13 @@
-// import '.scss/resets.css'
-// import '.scss/base.css'
-// import '.scss/footer.css'
-// import '.scss/form.css'
-// import '.scss/header.css'
+import { handleSubmit } from './js/formHandler'
+import { main } from './js/main'
+
 import './../client/scss/appStyles.scss';
 
-import { checkForName } from './js/nameChecker'
-import { handleSubmit } from './js/formHandler'
-
-console.log(checkForName);
-
-alert("I EXIST");
 console.log("CHANGE!!");
+
+// window.addEventListener('DOMContentLoaded', init);
+
+export {
+    handleSubmit,
+    main
+}
