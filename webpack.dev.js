@@ -10,8 +10,10 @@ module.exports = {
     devtool: 'source-map',
     stats: 'verbose',
     output: {
-        filename: 'bundle.js',
-        path: path.resolve(__dirname, 'dist'),
+        libraryTarget: 'var',
+        library: 'Client',
+        // filename: 'bundle.js',
+        path: path.resolve(__dirname, './dist'),
       },
     //   resolve: {
     //     // Add `.ts` and `.tsx` as a resolvable extension.
@@ -28,26 +30,10 @@ module.exports = {
                 test: /\.(s*)css$/,
                 loader: ['style-loader', 'css-loader', 'sass-loader']
             },
-                {
-                  test: /\.css$/i,
-                  use: [MiniCssExtractPlugin.loader, 'css-loader'],
-                }
-                                // use: [
-                //     {
-                //         loader: 'file-loader',
-                //         options: {
-                //             name: '[name].css',
-                //             outputPath: 'assets/css'
-                //         },
-                //     },
-                //     {
-                //     loader: 'style-loader'
-                //     },
-                //     {loader: 'css-loader'},
-
-                //     {loader: 'sass-loader'}
-                // ]
-            //}
+            {
+                test: /\.(s*)css$/,
+                use: [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader'],
+            }
         ]
     },
     plugins: [
@@ -65,7 +51,7 @@ module.exports = {
             protectWebpackAssets: false
         }),
         new MiniCssExtractPlugin({
-                    filename: '[name].css',
+            filename: '[name].css',
             chunkFilename: '[name].css'
         })
 
