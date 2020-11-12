@@ -25,15 +25,26 @@
 
         <main>
             <section>
-                <form class="">
+                <form class="" onsubmit="return Client.handleSubmit(event)">
+                    <input id="apitext" type="text" name="input" value="" placeholder="Enter your text">
+                    <input type="submit" name="" value="submit" onclick="return Client.handleSubmit(event)" onsubmit="return Client.handleSubmit(event)">
+                </form>
+                <!-- <form class="">
                     <input id="apitext" type="text" name="input" value="" placeholder="Name">
                     <button class="btn btn--primary" id="generate">Generate</button>
-                </form>
+                </form> -->
             <section>
 
             <section>
                 <strong>Form Results:</strong>
-                <div id="results"></div>
+                <div id="results">
+                    <div id="score_tag"></div>
+                    <div id="irony"></div>
+                    <div id="confidence"></div>
+                    <div id="subjectivity"></div>
+                    <div id="text"></div>
+
+                </div>
             </section>
         </main>
 
