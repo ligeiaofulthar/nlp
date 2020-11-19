@@ -2,7 +2,10 @@
 <html lang="en" dir="ltr">
     <head>
         <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Test</title>
+        <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;600&display=swap" rel="stylesheet">
+
         <!-- <link rel="stylesheet" href="../src/client/scss/resets.css">
         <link rel="stylesheet" href="../src/client/scss/base.css">
         <link rel="stylesheet" href="../src/client/scss/header.css">
@@ -15,16 +18,15 @@
     <body>
 
         <header>
-            <div class="">
-                Logo
-            </div>
-            <div class="">
-                navigation
-            </div>
+                <img class="logo" src="../src/client/img/yulia_logo.svg">
+            <ul class="">
+               <li>navigation</li>
+            </ul>
         </header>
 
         <main>
             <section>
+                <h1>Evaluate A News Article with Natural Language Processing</h1>
                 <form class="" onsubmit="return Client.handleSubmit(event)">
                     <input id="apitext" type="text" name="input" value="" placeholder="Enter your text">
                     <!-- <input type="submit" name="" value="submit" onclick="return Client.handleSubmit(event)" onsubmit="return Client.handleSubmit(event)"> -->
@@ -37,21 +39,24 @@
                 </form> -->
             <section>
 
-            <section>
+            <div>
                 <strong>Form Results:</strong>
                 <div id="results">
-                    <div id="score_tag"></div>
-                    <div id="irony"></div>
-                    <div id="confidence"></div>
-                    <div id="subjectivity"></div>
-                    <div id="text"></div>
+                    <div id="score_tag" class="badge"></div>
+                    <div id="irony" class="badge"></div>
+                    <div id="confidence" class="badge"></div>
+                    <div id="subjectivity" class="badge"></div>
+                    <div id="text" class="badge"></div>
 
                 </div>
-            </section>
+            </div>
         </main>
 
         <footer>
-            <p>This is a footer</p>
+            <ul>
+                <li><a href="">Github</a></li>
+                <li><a href="">Linkedin</a></li>
+            </ul>
         </footer>
 
     </body>
