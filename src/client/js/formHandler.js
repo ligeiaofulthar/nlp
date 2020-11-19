@@ -1,4 +1,5 @@
 // document.getElementById('generate').addEventListener('click', handleSubmit);
+// import img from './img/yulia_logo.svg'
 
 function handleSubmit(event) {
     event.preventDefault()
