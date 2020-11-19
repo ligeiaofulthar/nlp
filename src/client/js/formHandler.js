@@ -1,6 +1,3 @@
-// document.getElementById('generate').addEventListener('click', handleSubmit);
-// import img from './img/yulia_logo.svg'
-
 function handleSubmit(event) {
     event.preventDefault()
 
@@ -18,6 +15,13 @@ function handleSubmit(event) {
         document.getElementById('confidence').innerHTML = `Confidence: ${res.confidence}`;
         document.getElementById('subjectivity').innerHTML = `Subjectivity: ${res.subjectivity}`;
         document.getElementById('text').innerHTML = `Text: ${res.text}`;
+
+        const badge = document.getElementsByClassName('badge--selector');
+        for (var i=0; i<badge.length; i++) {
+            badge[i].classList.add("badge");
+        }
+        console.log(badge);
+        // badge.classList.add("badge");
 
     })
 };
