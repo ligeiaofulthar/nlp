@@ -1,6 +1,6 @@
 import { handleSubmit } from './js/formHandler'
 import { main } from './js/main'
-import { img } from './img/yulia_logo.svg'
+import img from './img/yulia_logo.svg'
 
 
 import './../client/scss/appStyles.scss';
