@@ -1,17 +1,20 @@
-@import 'themeColors';
 @import 'resets';
+@import 'themeColors';
 @import 'base';
 @import 'footer';
 @import 'form';
 @import 'header';
 
-$theme-font: 'Arial', sans-serif;
+$theme-font: 'Roboto Mono', monospace, sans-serif;
 
 body {
   font-family: $theme-font;
   background-color: $color-primary;
   h1, h2 {
-      color: $color-secondary
+      color: $color-black;
+      font-size: 2rem;
+      line-height: 1.4;
+      padding-bottom: 2rem;
   }
 }
 

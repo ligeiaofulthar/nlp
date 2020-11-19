@@ -12,3 +12,31 @@ section {
     max-width: 800px;
     margin: 50px auto;
 }
+
+body {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-template-rows: auto;
+    gap: 0px 30px;
+    grid-template-areas:
+    "header header header header header header header header header header header header"
+    "main main main main main main main main main main main main"
+    "ft ft ft ft ft ft ft ft ft ft ft ft";
+    
+}
+
+header {
+    grid-area: header;
+}
+
+main {
+    grid-area: main;
+    border-bottom: solid 4px #173b4a;
+border-top: solid 4px #173b4a;
+
+}
+
+footer {
+    grid-area: ft;
+
+}
