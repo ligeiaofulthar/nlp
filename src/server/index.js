@@ -39,15 +39,17 @@ app.get('/test', function (req, res) {
 })
 
 const sendData = async (req, res) => {
-  let input = req.body.text;
+  let input = req.body.url;
   let text = encodeURI(input);
+  console.log(`You entered: ${input}`);
+
   const url = "https://api.meaningcloud.com/sentiment-2.1?key=";
   const api = process.env.API_KEY;
   const model = 'general';
   const lang = 'en';
 
-  const response = await fetch(`${url}${api}&lang=${lang}&txt=${text}&model=${model}`);
-  console.log(`${url}${api}&lang=${lang}&txt=${text}&model=${model}`);
+  const response = await fetch(`${url}${api}&lang=${lang}&url=${text}&model=${model}`);
+  console.log(`${url}${api}&lang=${lang}&url=${text}&model=${model}`);
   try {
     const data = await response.json();
     console.log(data)
@@ -57,11 +59,12 @@ const sendData = async (req, res) => {
       confidence: data.confidence,
       irony: data.irony,
       subjectivity: data.subjectivity,
-      text: req.body.text
+      url: req.body.url
 
     }
     console.log('project data log', projectData.confidence);
     console.log('server', projectData);
+    console.log('text neu', projectData.url);
     res.send(projectData);
 
   } catch (error) {
