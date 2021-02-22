@@ -1,32 +1,31 @@
+import { checkUrl } from './urlChecker';
+
 function handleSubmit(event) {
     event.preventDefault()
 
-    //event.preventDefault()
-
     // check what text was put into the form field
-    let text = document.getElementById('apitext').value
-    console.log("::: Form Submitted :::", event, text)
+    let textUrl = document.getElementById('apitext').value
+    console.log("::: Form Submitted :::", event, textUrl)
     
-    fetchData(text)
+    if (checkUrl(textUrl)) {
+        fetchData('http://localhost:8080/sentiment', textUrl)
     // .then(res => res.json())
     .then(res => {
-        document.getElementById('score_tag').innerHTML = `Score Tag: ${res.score_tag}`;
+        document.getElementById('score_tag').innerHTML = 'Polarity: '+polarityChecker(res.score_tag);
         document.getElementById('irony').innerHTML = `Irony: ${res.irony}`;
         document.getElementById('confidence').innerHTML = `Confidence: ${res.confidence}`;
         document.getElementById('subjectivity').innerHTML = `Subjectivity: ${res.subjectivity}`;
-        document.getElementById('text').innerHTML = `Text: ${res.text}`;
+        document.getElementById('text').innerHTML = `Url: ${res.url}`;
 
         const badge = document.getElementsByClassName('badge--selector');
         for (var i=0; i<badge.length; i++) {
             badge[i].classList.add("badge");
         }
-        console.log(badge);
-        // badge.classList.add("badge");
-
     })
+}
 };
 
-const fetchData = async(text='') => {
+const fetchData = async(textUrl = {},  data = {}) => {
     const resp = await fetch('http://localhost:8080/sentiment', {
     method: 'POST',
     mode: 'cors',
@@ -36,7 +35,7 @@ const fetchData = async(text='') => {
         'Content-Type': 'application/json',
         // 'Accept': 'application/json'
     },
-    body: JSON.stringify( {text: text }),
+    body: JSON.stringify({url: data }),
     });
 
     try {
@@ -48,5 +47,30 @@ const fetchData = async(text='') => {
         console.log('error', error);
     }
 }
+
+const polarityChecker = (score) => {
+    let show;
+    switch (score) {
+        case "P+":
+            show = "strong positive";
+          break;
+        case "P":
+          show = "positive";
+          break;
+        case "NEU":
+          show = "neutral";
+          break;
+        case "N":
+          show = "negative";
+          break;
+        case "N+":
+          show = "strong negative";
+          break;
+        default:
+          show = "Swithout sentiment";
+      }
+      return show;
+
+    }
 
 export { handleSubmit }
