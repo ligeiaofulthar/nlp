@@ -1,12 +1,16 @@
+main {
+    background-color: #d9dbf0;
+}
+
 form {
-    background-color:#ffc3b3;
-    border: solid 4px #d9dbf0;
+    background-color: #ffe2d1;
+    border: solid 4px #918beb;
     padding: 40px;
 }
 
 input, textarea {
     background-color: #ffe2d1;
-    border: solid 4px #d9dbf0;
+    border: solid 4px #918beb;
     height: 2.8rem;
     min-width: 200px;
     width: calc(100% - 2rem - 8px);
@@ -28,7 +32,7 @@ button {
     background-color: transparent;
     font-size: 1rem;
     color: #173b4a;
-    border-bottom: solid 2px #173b4a;
+    border-bottom: solid 2px #918beb;
     cursor: pointer;
 }
 
@@ -48,20 +52,22 @@ button {
 
 .btn--primary {
     background-color: #d9dbf0;
-    color: #173b4a;
-}
+    color: #918beb;
+    border: solid 4px #918beb;
 
-.btn--primary:hover {
-    background-color: #918beb;
-    color: #173b4a;
+    &:hover {
+        background-color: #918beb;
+        color: #173b4a;
+    }
 }
 
 .badge {
-    background-color: #d9dbf0;
-color: black;
-border-radius: 27px;
-padding: 1rem;
-width: -webkit-fit-content;
-display: inline-block;
-margin: 0.5rem 0;
+    background-color: #ffe2d1;
+    color: black;
+    border-radius: 27px;
+    padding: 1rem;
+    width: -webkit-fit-content;
+    display: inline-block;
+    margin: 0.5rem 0;
+    border: solid 4px #918beb;
 }
