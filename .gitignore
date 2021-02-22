@@ -141,3 +141,4 @@ dist
 # TernJS port file
 .tern-port
 nlp.code-workspace
+.vscode/settings.json
