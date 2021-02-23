@@ -8,7 +8,7 @@ function handleSubmit(event) {
     console.log("::: Form Submitted :::", event, textUrl)
     
     if (checkUrl(textUrl)) {
-        fetchData('http://localhost:8080/sentiment', textUrl)
+        fetchData('/sentiment', textUrl)
     // .then(res => res.json())
     .then(res => {
         document.getElementById('score_tag').innerHTML = 'Polarity: '+polarityChecker(res.score_tag);
@@ -26,7 +26,7 @@ function handleSubmit(event) {
 };
 
 const fetchData = async(textUrl = {},  data = {}) => {
-    const resp = await fetch('http://localhost:8080/sentiment', {
+    const resp = await fetch('/sentiment', {
     method: 'POST',
     mode: 'cors',
     credentials: 'same-origin',
