@@ -42,7 +42,7 @@ const sendData = async (req, res) => {
   console.log(`You entered: ${input}`);
 
   const url = "https://api.meaningcloud.com/sentiment-2.1?key=";
-  const api = process.env.API_KEY;
+  const api = process.env.MEANINGCLOUD_API_KEY;
   const model = 'general';
   const lang = 'en';
 
