@@ -50,7 +50,7 @@ const sendData = async (req, res) => {
   console.log(`${url}${api}&lang=${lang}&url=${text}&model=${model}`);
   try {
     const data = await response.json();
-    console.log(data)
+    // console.log(data)
 
     const projectData = {
       score_tag: data.score_tag,
@@ -60,9 +60,9 @@ const sendData = async (req, res) => {
       url: req.body.url
 
     }
-    console.log('project data log', projectData.confidence);
-    console.log('server', projectData);
-    console.log('text neu', projectData.url);
+    // console.log('project data log', projectData.confidence);
+    // console.log('server', projectData);
+    // console.log('text neu', projectData.url);
     res.send(projectData);
 
   } catch (error) {
