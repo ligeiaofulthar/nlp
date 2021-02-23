@@ -2,17 +2,26 @@ const path = require('path')
 const webpack = require('webpack')
 const HtmlWebPackPlugin = require("html-webpack-plugin")
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
+const TerserPlugin = require("terser-webpack-plugin");
 const WorkboxPlugin = require('workbox-webpack-plugin')
 
-//TODO: npm i -D optimize-css-assets-webpack-plugin terser-webpack-plugin
-
 module.exports = {
+    optimization: {
+        minimize: true,
+        minimizer:  [
+            new TerserPlugin({
+              test: /\.js(\?.*)?$/i,
+            }),
+          ],
+    },
     entry: './src/client/index.js',
     mode: 'production',
     output:{
          libraryTarget: 'var',
          library: 'Client',
     },
+
     module: {
         rules: [
             {
@@ -52,7 +61,16 @@ module.exports = {
         }),
         new MiniCssExtractPlugin({
             filename: '[name].css',
-    chunkFilename: '[name].css'
-})
+            chunkFilename: '[name].css'
+        }),
+        // new ExtractTextPlugin('styles.css'),
+        new OptimizeCssAssetsPlugin({
+            assetNameRegExp: /\.optimize\.css$/g,
+            cssProcessor: require('cssnano'),
+            cssProcessorPluginOptions: {
+            preset: ['default', { discardComments: { removeAll: true } }],
+            },
+            canPrint: true
+        })
     ]
 }
