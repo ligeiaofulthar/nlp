@@ -1,5 +1,6 @@
 import { handleSubmit } from './js/formHandler'
-import { main } from './js/main'
+import { checkUrl } from './js/urlChecker'
+
 import img from './img/yulia_logo.svg'
 
 
@@ -10,6 +11,5 @@ console.log("CHANGE!!");
 // window.addEventListener('DOMContentLoaded', init);
 
 export {
-    handleSubmit,
-    main, img
+    handleSubmit, checkUrl, img
 }

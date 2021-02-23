@@ -13,8 +13,6 @@ const fetch = require('node-fetch');
 
 const app = express()
 
-const mockAPIResponse = require('./mockAPI.js')
-
 /* Initializing the main project folder */
 
 app.use(cors())
