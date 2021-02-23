@@ -6,12 +6,12 @@ function handleSubmit(event) {
     // check what text was put into the form field
     let textUrl = document.getElementById('apitext').value
     console.log("::: Form Submitted :::", event, textUrl)
-    
+
     if (checkUrl(textUrl)) {
         fetchData('http://localhost:8080/sentiment', textUrl)
     // .then(res => res.json())
     .then(res => {
-        document.getElementById('score_tag').innerHTML = 'Polarity: '+polarityChecker(res.score_tag);
+        document.getElementById('score_tag').innerHTML = 'Polarity: '+polarity(res.score_tag);
         document.getElementById('irony').innerHTML = `Irony: ${res.irony}`;
         document.getElementById('confidence').innerHTML = `Confidence: ${res.confidence}`;
         document.getElementById('subjectivity').innerHTML = `Subjectivity: ${res.subjectivity}`;
@@ -39,38 +39,26 @@ const fetchData = async(textUrl = {},  data = {}) => {
     });
 
     try {
-        const newData = await resp.json()
-        console.log(newData);
-        return newData;
+        const apiAnswer = await resp.json()
+        console.log(apiAnswer);
+        return apiAnswer;
 
     } catch(error) {
         console.log('error', error);
     }
 }
 
-const polarityChecker = (score) => {
-    let show;
-    switch (score) {
-        case "P+":
-            show = "strong positive";
-          break;
-        case "P":
-          show = "positive";
-          break;
-        case "NEU":
-          show = "neutral";
-          break;
-        case "N":
-          show = "negative";
-          break;
-        case "N+":
-          show = "strong negative";
-          break;
-        default:
-          show = "Swithout sentiment";
-      }
-      return show;
-
-    }
+// translate api output
+function polarity (result) {
+  const answers = {
+    'P+': 'strong positive',
+    'NEU': 'neutral',
+    'P': 'positive',
+    'N': 'negative',
+    'N+': 'strong negative',
+    'default': 'without sentiment'
+  };
+  return (answers[result] || answers['default']);
+}
 
 export { handleSubmit }
