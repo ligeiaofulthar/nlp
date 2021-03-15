@@ -3,7 +3,7 @@ const webpack = require('webpack')
 const HtmlWebPackPlugin = require("html-webpack-plugin")
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
-const TerserPlugin = require("terser-webpack-plugin");
+const TerserPlugin = require("terser-webpack-plugin")
 const WorkboxPlugin = require('workbox-webpack-plugin')
 
 module.exports = {
@@ -17,9 +17,11 @@ module.exports = {
     },
     entry: './src/client/index.js',
     mode: 'production',
-    output:{
-         libraryTarget: 'var',
-         library: 'Client',
+    output: {
+        libraryTarget: 'var',
+        library: 'Client',
+        filename: '[name].bundle.js',
+        path: path.resolve(__dirname, './dist'),
     },
 
     module: {
@@ -29,10 +31,6 @@ module.exports = {
                 exclude: /node_modules/,
                 loader: "babel-loader"
             },
-            // {
-            //     test: /\.(s*)css$/,
-            //     loader: ['style-loader', 'css-loader', 'sass-loader']
-            // },
             {
                 test: /\.(s*)css$/,
                 use: [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader'],
