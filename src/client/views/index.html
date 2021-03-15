@@ -6,13 +6,6 @@
         <title>Test</title>
         <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;600&display=swap" rel="stylesheet">
 
-        <!-- <link rel="stylesheet" href="../src/client/scss/resets.css">
-        <link rel="stylesheet" href="../src/client/scss/base.css">
-        <link rel="stylesheet" href="../src/client/scss/header.css">
-        <link rel="stylesheet" href="../src/client/scss/form.css">
-        <link rel="stylesheet" href="../src/client/scss/footer.css">
-        <link rel="stylesheet" href="../src/client/scss/appStyles.css"> -->
-
     </head>
 
     <body>
@@ -29,14 +22,8 @@
                 <h1>Evaluate A News Article with Natural Language Processing</h1>
                 <form class="" onsubmit="return Client.handleSubmit(event)">
                     <input id="apitext" type="text" name="input" value="" placeholder="Enter your text">
-                    <!-- <input type="submit" name="" value="submit" onclick="return Client.handleSubmit(event)" onsubmit="return Client.handleSubmit(event)"> -->
                     <button class="btn btn--primary" value="submit" id="generate" onclick="return Client.handleSubmit(event)" onsubmit="return Client.handleSubmit(event)">Generate</button>
-
                 </form>
-                <!-- <form class="">
-                    <input id="apitext" type="text" name="input" value="" placeholder="Name">
-                    <button class="btn btn--primary" id="generate">Generate</button>
-                </form> -->
             <section>
 
             <div>
@@ -59,5 +46,17 @@
             </ul>
         </footer>
 
+
+        <script>
+            if ('serviceWorker' in navigator) {
+                window.addEventListener('load', () => {
+                    navigator.serviceWorker.register('/service-worker.js').then(registration => {
+                    console.log('SW registered: ', registration);
+                    }).catch(registrationError => {
+                    console.log('SW registration failed: ', registrationError);
+                    });
+                });
+            }
+        </script>
     </body>
 </html>
