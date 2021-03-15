@@ -2,7 +2,7 @@ const path = require('path')
 const webpack = require('webpack')
 const HtmlWebPackPlugin = require("html-webpack-plugin")
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
-const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+// const WorkboxPlugin = require('workbox-webpack-plugin')
 
 module.exports = {
     entry: './src/client/index.js',
@@ -11,14 +11,11 @@ module.exports = {
     stats: 'verbose',
     output: {
         libraryTarget: 'var',
-        library: 'Client',
-        // filename: 'bundle.js',
-        path: path.resolve(__dirname, './dist'),
-      },
-    //   resolve: {
-    //     // Add `.ts` and `.tsx` as a resolvable extension.
-    //     extensions: [".ts", ".tsx", ".js", ".css", ".scss"]
-    // },
+        library: 'Client'
+    },
+    devServer: {
+        port: 8080,
+    },
     module: {
         rules: [
             {
@@ -31,15 +28,8 @@ module.exports = {
                 loader: ['style-loader', 'css-loader', 'sass-loader']
             },
             {
-                test: /\.(s*)css$/,
-                use: [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader'],
-            },
-            {
                 test: /\.(png|jpe?g|gif|svg)$/i,
                 loader: 'file-loader',
-                // options: {
-                //     name: '[path][name].[ext]',
-                //   },
             }
         ]
     },
@@ -57,10 +47,11 @@ module.exports = {
             cleanStaleWebpackAssets: true,
             protectWebpackAssets: false
         }),
-        new MiniCssExtractPlugin({
-            filename: '[name].css',
-            chunkFilename: '[name].css'
-        })
-
+        // new WorkboxPlugin.GenerateSW({
+        //     // these options encourage the ServiceWorkers to get in there fast
+        //     // and not allow any straggling "old" SWs to hang around
+        //     clientsClaim: true,
+        //     skipWaiting: true,
+        // }),
    ]
 }
