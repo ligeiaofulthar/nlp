@@ -141,3 +141,7 @@ typings/
 .tern-port
 nlp.code-workspace
 .vscode/settings.json
+dist/index.html
+dist/main.bundle.js
+dist/main.js
+dist/service-worker.js
