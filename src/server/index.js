@@ -1,6 +1,3 @@
-const dotenv = require('dotenv');
-dotenv.config();
-
 // express to run server and routes
 const express = require('express');
 
@@ -26,20 +23,12 @@ app.use(bodyParser.urlencoded({
 app.use(express.static('dist'))
 
 app.get('/', function (req, res) {
-  res.sendFile(path.resolve('dist/index.html'))
-  // res.sendFile(path.resolve('src/client/views/index.html'))
-})
-
-
-app.get('/test', function (req, res) {
-  // res.send('hello test')
-  res.send(mockAPIResponse)
+  res.sendFile('dist/index.html')
 })
 
 const sendData = async (req, res) => {
   let input = req.body.url;
   let text = encodeURI(input);
-  console.log(`You entered: ${input}`);
 
   const url = "https://api.meaningcloud.com/sentiment-2.1?key=";
   const api = process.env.MEANINGCLOUD_API_KEY;
@@ -47,10 +36,9 @@ const sendData = async (req, res) => {
   const lang = 'en';
 
   const response = await fetch(`${url}${api}&lang=${lang}&url=${text}&model=${model}`);
-  console.log(`${url}${api}&lang=${lang}&url=${text}&model=${model}`);
   try {
     const data = await response.json();
-    // console.log(data)
+    console.log(data);
 
     const projectData = {
       score_tag: data.score_tag,
@@ -58,11 +46,7 @@ const sendData = async (req, res) => {
       irony: data.irony,
       subjectivity: data.subjectivity,
       url: req.body.url
-
     }
-    // console.log('project data log', projectData.confidence);
-    // console.log('server', projectData);
-    // console.log('text neu', projectData.url);
     res.send(projectData);
 
   } catch (error) {
@@ -75,7 +59,4 @@ app.post('/sentiment', function (req, res) {
   sendData(req, res);
 })
 
-// designates what port the app will listen to for incoming requests
-app.listen(process.env.PORT || 5000, function () {
-  console.log('App listening on port 5000!')
-})
+module.exports = app;
